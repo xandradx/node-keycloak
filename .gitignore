@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+/coverage/
+/.nyc_output/
+
+# don't check in version file
+/src/version.ts
+.DS_Store
