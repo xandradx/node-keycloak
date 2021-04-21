@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { statusRoutes } from './components/status/StatusRoutes';
+import { authRoutes } from './components/auth/authRoutes';
 
 export function registerRoutes(app: express.Express): any {
 
@@ -7,7 +8,12 @@ export function registerRoutes(app: express.Express): any {
         response.render("home");
     });
 
+    const authRouter: any = express.Router();
+    app.use('/auth', authRouter);
+    authRoutes(app, authRouter);
+
     const statusRouter: any = express.Router();
     app.use('/api/status', statusRouter);
     statusRoutes(app, statusRouter);
+
 }
