@@ -13,7 +13,7 @@
       */
      public async getAccessToken(code: string): Promise<any> {
          try {
-             const tokenUrl: string = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/token`;
+             const tokenUrl: string = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/token`;
              const params: string = qs.stringify({
                  grant_type: 'authorization_code',
                  client_id: envHandler.envKeycloakClientId(),
@@ -45,7 +45,7 @@
                role = realm_access.roles;
              }
              const query = qs.stringify({
-               redirect_uri: envHandler.envRedirectHostURI()
+               redirect_uri: envHandler.envRedirectURL()
              });
             
              const data = {
@@ -53,7 +53,7 @@
                name,
                email,
                role,
-               host: `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/logout?${query}`,
+               host: `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/logout?${query}`,
              };
              return data;
          } catch(err) {

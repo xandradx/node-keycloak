@@ -11,9 +11,15 @@ export const envHost = () => getConfiguration().HOST;
 export const envPort = () => getConfiguration().PORT;
 
 /**
- * Get keyclock server
+ * Get Host
  */
  export const envRedirectHostURI = () => getConfiguration().REDIRECT_HOST_URI;
+
+
+/**
+ * Get Host Auth
+ */
+ export const envRedirectURL = () => getConfiguration().REDIRECT_URI;
 
 
 /**

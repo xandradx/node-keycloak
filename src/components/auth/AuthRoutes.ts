@@ -15,7 +15,7 @@ export function authRoutes(app: express.Express, router: any) : any {
             client_id: envHandler.envKeycloakClientId(),
             redirect_uri: envHandler.envRedirectHostURI()
         });
-        const host: any = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/auth?${query}`;
+        const host: any = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/auth?${query}`;
         response.redirect(host);
     }
 

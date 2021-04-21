@@ -26,6 +26,7 @@ const environmentConfiguration = {
   PORT: process.env.PORT,
   HOST: process.env.HOST,
   REDIRECT_HOST_URI: process.env.REDIRECT_HOST_URI,
+  REDIRECT_URI: process.env.REDIRECT_URI,
   KEYCLOAK_SERVER: process.env.KEYCLOAK_SERVER,
   KEYCLOAK_REALM: process.env.KEYCLOAK_REALM,
   KEYCLOAK_CLIENT_ID: process.env.KEYCLOAK_CLIENT_ID,
@@ -34,6 +35,7 @@ const environmentConfiguration = {
 };
 
 export default environmentConfiguration;
+
 ```
 
 `src/helpers/environment.handler.ts`
@@ -52,9 +54,15 @@ export const envHost = () => getConfiguration().HOST;
 export const envPort = () => getConfiguration().PORT;
 
 /**
- * Get keyclock server
+ * Get Host
  */
  export const envRedirectHostURI = () => getConfiguration().REDIRECT_HOST_URI;
+
+
+/**
+ * Get Host Auth
+ */
+ export const envRedirectURL = () => getConfiguration().REDIRECT_URI;
 
 
 /**
@@ -100,7 +108,7 @@ export const envKeycloakClientSecrete = () => getConfiguration().KEYCLOAK_CLIENT
       */
      public async getAccessToken(code: string): Promise<any> {
          try {
-             const tokenUrl: string = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/token`;
+             const tokenUrl: string = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/token`;
              const params: string = qs.stringify({
                  grant_type: 'authorization_code',
                  client_id: envHandler.envKeycloakClientId(),
@@ -132,7 +140,7 @@ export const envKeycloakClientSecrete = () => getConfiguration().KEYCLOAK_CLIENT
                role = realm_access.roles;
              }
              const query = qs.stringify({
-               redirect_uri: envHandler.envRedirectHostURI()
+               redirect_uri: envHandler.envRedirectURL()
              });
             
              const data = {
@@ -140,7 +148,7 @@ export const envKeycloakClientSecrete = () => getConfiguration().KEYCLOAK_CLIENT
                name,
                email,
                role,
-               host: `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/logout?${query}`,
+               host: `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/logout?${query}`,
              };
              return data;
          } catch(err) {
@@ -170,7 +178,7 @@ export function authRoutes(app: express.Express, router: any) : any {
             client_id: envHandler.envKeycloakClientId(),
             redirect_uri: envHandler.envRedirectHostURI()
         });
-        const host: any = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeycloakClientId()}/protocol/openid-connect/auth?${query}`;
+        const host: any = `${envHandler.envKeyclockServer()}/auth/realms/${envHandler.envKeyclockRealm()}/protocol/openid-connect/auth?${query}`;
         response.redirect(host);
     }
 
