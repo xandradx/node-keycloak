@@ -5,7 +5,7 @@ import * as logger from 'winston';
 import { TransformableInfo } from '../node_modules/logform';
 import { App } from './App';
 
-const port: string | undefined | number = process.env.PORT || 3146;
+const port: string | undefined | number = process.env.PORT || 3000;
 export const app: App = new App();
 export let server: http.Server;
 

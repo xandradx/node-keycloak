@@ -1,18 +1,12 @@
-import * as dotenv from "dotenv";
-dotenv.config();
-
-const envPath = `.env.${process.env.NODE_ENV}`;
-dotenv.config({ path: envPath });
-
 const environmentConfiguration = {
-  PORT: process.env.PORT,
-  HOST: process.env.HOST,
-  REDIRECT_HOST_URI: process.env.REDIRECT_HOST_URI,
-  REDIRECT_URI: process.env.REDIRECT_URI,
-  KEYCLOAK_SERVER: process.env.KEYCLOAK_SERVER,
-  KEYCLOAK_REALM: process.env.KEYCLOAK_REALM,
-  KEYCLOAK_CLIENT_ID: process.env.KEYCLOAK_CLIENT_ID,
-  KEYCLOAK_CLIENT_SECRETE: process.env.KEYCLOAK_CLIENT_SECRETE,
+  PORT: 3000,
+  HOST: 'localhost',
+  REDIRECT_HOST_URI: 'http://localhost:3000',
+  REDIRECT_URI: 'http://localhost:3000/auth',
+  KEYCLOAK_SERVER: 'http://192.168.64.11:32039',
+  KEYCLOAK_REALM: 'demo',
+  KEYCLOAK_CLIENT_ID: 'node',
+  KEYCLOAK_CLIENT_SECRETE: 'ca362a58-db6a-4186-be73-973598707466',
 
 };
 

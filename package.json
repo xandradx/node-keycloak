@@ -6,10 +6,6 @@
   "scripts": {
     "build": "npm run tslint",
     "start": "node index.js",
-    "start:local": "SET NODE_ENV=local && npm run version && npm run build && npm start",
-    "start:test": "SET NODE_ENV=development && npm run build && npm start",
-    "start:staging": "SET NODE_ENV=staging && npm run build && npm start",
-    "start:production": "SET NODE_ENV=production && npm run build && npm start",
     "fix": "tslint --fix --project tsconfig.json 'src/**/*{.ts}'",
     "tslint": "tslint --project tsconfig.json",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
@@ -26,7 +22,6 @@
     "@types/winston": "^2.4.4",
     "axios": "^0.21.1",
     "body-parser": "^1.18.3",
-    "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.16.4",
     "express-session": "^1.17.1",
