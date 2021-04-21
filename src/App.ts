@@ -1,7 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as http from 'http';
-import * as session from "express-session";
 import { registerRoutes } from './routes';
 
 /**
@@ -23,14 +22,6 @@ export class App {
     }
 
     private setupMiddleware(): void {
-        const memoryStore = new session.MemoryStore();
-        const sessionObj = {
-            secret: "mySecret",
-            resave: false,
-            saveUninitialized: true,
-            store: memoryStore,
-        };
-        this.express.use(session(sessionObj));
         this.express.use(bodyParser.urlencoded({extended: true}));
         this.express.use(bodyParser.json());
         this.express.use(express.static("public"));
