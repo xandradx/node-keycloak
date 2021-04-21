@@ -15,7 +15,7 @@ export class App {
         this.httpServer = http.createServer(this.express);
         this.express.use(this.setupCors);
         // Set EJS as templating engine
-        this.express.set("view engine", "ejs");
+        this.express.set('view engine', 'ejs');
 
         this.setupMiddleware();
         registerRoutes(this.express);
@@ -24,7 +24,7 @@ export class App {
     private setupMiddleware(): void {
         this.express.use(bodyParser.urlencoded({extended: true}));
         this.express.use(bodyParser.json());
-        this.express.use(express.static("public"));
+        this.express.use(express.static('public'));
     }
 
     private setupCors(req: express.Request, res: express.Response, next: express.NextFunction): void {

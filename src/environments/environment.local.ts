@@ -1,10 +1,10 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 dotenv.config();
 
-const envPath = `.env.${process.env.NODE_ENV}`;
+const envPath: string = `.env.${process.env.NODE_ENV}`;
 dotenv.config({ path: envPath });
 
-const environmentConfiguration = {
+const environmentConfiguration: any = {
   PORT: process.env.PORT,
   HOST: process.env.HOST,
 };

@@ -3,9 +3,9 @@ import getConfiguration from '../environments/environment';
 /**
  * Get Host
  */
-export const envHost = () => getConfiguration().HOST;
+export const envHost: any = (): any => getConfiguration().HOST;
 
 /**
  * Get port
  */
-export const envPort = () => getConfiguration().PORT;
+export const envPort: any = () : any => getConfiguration().PORT;

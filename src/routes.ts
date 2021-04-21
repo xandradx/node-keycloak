@@ -4,7 +4,7 @@ import { statusRoutes } from './components/status/StatusRoutes';
 export function registerRoutes(app: express.Express): any {
 
     app.get('/', (request: any, response: any, next: any) => {
-        response.render("home");
+        response.render('home');
     });
 
     const statusRouter: any = express.Router();

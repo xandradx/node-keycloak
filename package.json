@@ -1,12 +1,12 @@
 {
-  "name": "iifl-keyclock",
+  "name": "node-keyclock",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npm run tslint",
     "start": "node index.js",
-    "start:local": "SET NODE_ENV=local && npm run version && npm run build && npm start",
+    "start:local": "set NODE_ENV=local && npm run version && npm run build && npm start",
     "start:test": "SET NODE_ENV=development && npm run build && npm start",
     "start:staging": "SET NODE_ENV=staging && npm run build && npm start",
     "start:production": "SET NODE_ENV=production && npm run build && npm start",
