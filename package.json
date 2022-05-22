@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run tslint",
     "start": "node index.js",
     "start:local": "SET NODE_ENV=local && npm run version && npm run build && npm start",
     "start:test": "SET NODE_ENV=development && npm run build && npm start",
